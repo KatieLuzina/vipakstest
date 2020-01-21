@@ -1,14 +1,26 @@
 <template>
-  <div class="profile">fdif
+  <div>
+    {{info.login}}
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+
 
 export default {
-  name: 'profile',
-  components: {
+  name: 'Profile',
+  data() {
+    return {
+      info: []
+    }
+  },
+  created() {
+      axios.get('https://api.github.com/users/KatieLuzina')
+      .then(response => {
+        this.info= response.data
+      })   
   }
 }
+
 </script>

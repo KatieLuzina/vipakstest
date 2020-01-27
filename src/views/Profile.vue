@@ -12,13 +12,11 @@
     Список репозиториев 
     <table>
       <tr v-for="item in repos.data" :key="item.name">
-        <td>{{item.name}}</td>
+        <td class="repos_name">{{item.name}}</td>
         <td>
+          <b class="repos_name_table">{{item.name}}</b> <br>
           <b>Описание :</b> {{item.description}}<br>
           <b>Язык программирования :</b> {{item.language}}<br>
-          <!--<div v-for="(value, name) in item.languages" :key="name">
-            {{name}}
-          </div>-->
           <b>Дата создания :</b> {{item.created_at}}<br>
           <b>Ссылка на клонирование репозитория:</b> <a :href="item.clone_url">{{item.clone_url}}</a><br>
         </td>
@@ -83,7 +81,6 @@ export default {
       })
   }
 }
-
 </script>
 
 <style>
@@ -112,14 +109,13 @@ export default {
 .profile_repos {
   font-size: 22px;
   font-weight: bold;
-
 }
 table {
   border: 1px solid #ccc;
   border-spacing: 3px;
   border-collapse: collapse;
-  margin: 20px 100px;
   margin: 0 auto;
+  margin-top: 20px; 
 }
 td{
   border: solid 1px #ccc;
@@ -131,13 +127,11 @@ td{
 a{
   color: #42b983;
 }
-
 .profile_following {
   margin : 20px 50px;
   font-size: 22px;
   font-weight: bold;
 }
-
 .profile_following_main {
   padding: 25px 250px;
   display: flex; 
@@ -156,5 +150,78 @@ a{
   display: block;
   margin-bottom: 40px;
   color: #42b983;
+}
+.repos_name_table {
+  display: none;
+  font-weight: bold;
+  text-align: center;
+}
+@media (max-width: 1200px) {
+  .profile_main {
+    padding: 25px 100px;
+  }
+  .profile_img {
+    width: 250px;
+  }
+  .profile_following_main {
+    padding: 25px 100px; 
+  }
+}
+@media (max-width: 767px) {
+  .profile_main {
+    padding: 25px 20px;
+  }
+  .profile_descr {
+  font-size: 16px;
+  line-height: 16px;
+  }
+  .profile_img {
+    width: 150px;
+    margin-right: 20px;
+  }
+  .profile_login {
+  margin-bottom: 0;
+  }
+  .profile_following_main {
+    padding: 25px 20px; 
+  }
+  td{
+  font-size: 14px;
+  }
+  .profile_following_img {
+  width: 100px;
+ }
+}
+@media (max-width: 479px) {
+  .profile_main {
+  padding: 25px 20px;
+  }
+  .profile_following_main {
+  padding: 25px 20px; 
+  }
+  td{
+  font-size: 12px;
+  }
+  .profile_following_img {
+  width: 60px;
+ }
+ .repos_name {
+   display: none;
+ }
+ .repos_name_table {
+   display: block;
+ }
+ .profile_repos {
+  font-size: 16px;
+}
+.profile_following {
+  font-size: 16px; 
+  margin : 10px 20px;
+}
+.profile_following_descr {
+  font-size: 12px;
+  line-height: 12px;
+  padding-top: 10px;
+}
 }
 </style>
